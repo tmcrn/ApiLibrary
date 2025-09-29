@@ -20,8 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="DTO\" />
-      <Folder Include="Endpoints\" />
       <Folder Include="Models\" />
     </ItemGroup>
 
