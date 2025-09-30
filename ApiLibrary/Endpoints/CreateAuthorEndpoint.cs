@@ -10,7 +10,7 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
     {
         Post("/api/authors");
         AllowAnonymous();
-    }
+    }   
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)
     {
