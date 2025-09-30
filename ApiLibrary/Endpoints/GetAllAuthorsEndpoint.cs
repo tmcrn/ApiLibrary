@@ -21,7 +21,7 @@ public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext): EndpointW
             Id = author.Id,
             Firstname = author.Firstname,
             Name = author.Name
-        }).ToList();
+        }).ToListAsync(ct);
 
         await Send.OkAsync(result, ct);
     }
