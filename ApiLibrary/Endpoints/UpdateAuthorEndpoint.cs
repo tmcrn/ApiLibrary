@@ -9,15 +9,13 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext):Endpoint<Up
 {
     public override void Configure()
     {
-        Put("api/authors{id}");
+        Put("api/authors{id}", a => new{a.Id});
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)
-    {
-        var id = Route<int>("id");
-        
-        var author = await libraryDbContext.Authors.FirstOrDefaultAsync(a => a.Id == id, ct);
+    {        
+        var author = await libraryDbContext.Authors.FirstOrDefaultAsync(a => a.Id == req.Id, ct);
         
         author.Firstname = req.Firstname;
         author.Name = req.Name;
