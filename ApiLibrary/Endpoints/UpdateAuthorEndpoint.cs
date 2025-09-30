@@ -15,7 +15,14 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext):Endpoint<Up
 
     public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)
     {        
-        var author = await libraryDbContext.Authors.FirstOrDefaultAsync(a => a.Id == req.Id, ct);
+        var author = await libraryDbContext.Authors.SingleOrDefaultAsync(a => a.Id == req.Id, ct);
+
+        if (author == null)
+        {
+            Console.Writeline($"Aucun auteur avec l'ID {req.Id} trouvé"
+            await Send.NotFoundAsync(ct);
+            return;
+        }
         
         author.Firstname = req.Firstname;
         author.Name = req.Name;
