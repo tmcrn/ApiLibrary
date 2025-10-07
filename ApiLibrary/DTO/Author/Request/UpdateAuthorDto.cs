@@ -1,4 +1,4 @@
-namespace ApiLibrary.DTO;
+namespace ApiLibrary.DTO.Author.Request;
 
 public class UpdateAuthorDto
 {

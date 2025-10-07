@@ -1,4 +1,4 @@
-namespace ApiLibrary.DTO;
+namespace ApiLibrary.DTO.Author.Response;
 
 public class GetAuthorDto
 {

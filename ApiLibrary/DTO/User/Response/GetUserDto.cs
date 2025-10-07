@@ -1,6 +1,6 @@
-namespace ApiLibrary.DTO;
+namespace ApiLibrary.DTO.User.Response;
 
-public class UpdateUserDto
+public class GetUserDto
 {
     public int Id  { get; set; }
     public string? FirstName { get; set; }

@@ -1,8 +1,8 @@
-using ApiLibrary.DTO;
+using ApiLibrary.DTO.Author.Response;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiLibrary.Endpoints;
+namespace ApiLibrary.Endpoints.Author;
 
 public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext): EndpointWithoutRequest<List<GetAuthorDto>>
 {

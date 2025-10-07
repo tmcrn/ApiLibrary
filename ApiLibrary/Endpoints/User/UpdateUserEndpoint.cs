@@ -1,22 +1,21 @@
-using ApiLibrary.DTO;
+using ApiLibrary.DTO.User.Request;
+using ApiLibrary.DTO.User.Response;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiLibrary.Endpoints;
+namespace ApiLibrary.Endpoints.User;
 
 public class UpdateUserEndpoint(LibraryDbContext libraryDbContext):Endpoint<UpdateUserDto, GetUserDto>
 {
     public override void Configure()
     {
-        Put("api/users/{id}");
+        Put("api/users/{@Id}", x => new { x.Id });
         AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateUserDto req, CancellationToken ct)
     {
-        var id = Route<int>("id");
-        
-        var user = await libraryDbContext.Users.FirstOrDefaultAsync(u => u.Id == id, ct);
+        var user = await libraryDbContext.Users.FirstOrDefaultAsync(u => u.Id == req.Id, ct);
         
         user.FirstName = req.FirstName;
         user.LastName = req.LastName;

@@ -1,8 +1,8 @@
-using ApiLibrary.DTO;
+using ApiLibrary.DTO.User.Response;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiLibrary.Endpoints;
+namespace ApiLibrary.Endpoints.User;
 
 public class GetAllUsersEndpoint (LibraryDbContext libraryDbContext):EndpointWithoutRequest<List<GetUserDto>>
 {

@@ -1,8 +1,8 @@
-using ApiLibrary.DTO;
-using ApiLibrary.Models;
+using ApiLibrary.DTO.User.Request;
+using ApiLibrary.DTO.User.Response;
 using FastEndpoints;
 
-namespace ApiLibrary.Endpoints;
+namespace ApiLibrary.Endpoints.User;
 
 public class CreateUserEndpoint (LibraryDbContext libraryDbContext): Endpoint<CreateUserDto, GetUserDto>
 {
@@ -14,7 +14,7 @@ public class CreateUserEndpoint (LibraryDbContext libraryDbContext): Endpoint<Cr
 
     public override async Task HandleAsync(CreateUserDto req, CancellationToken ct)
     {
-        var user = new User
+        var user = new Models.User
         {
             FirstName = req.FirstName,
             LastName = req.LastName,

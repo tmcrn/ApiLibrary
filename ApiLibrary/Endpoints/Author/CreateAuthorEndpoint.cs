@@ -1,8 +1,8 @@
-using ApiLibrary.DTO;
-using ApiLibrary.Models;
+using ApiLibrary.DTO.Author.Request;
+using ApiLibrary.DTO.Author.Response;
 using FastEndpoints;
 
-namespace ApiLibrary.Endpoints;
+namespace ApiLibrary.Endpoints.Author;
 
 public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<CreateAuthorDto, GetAuthorDto>
 {
@@ -14,7 +14,7 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)
     {
-        var author = new Author
+        var author = new Models.Author
         {
             Firstname = req.Firstname,
             Name = req.Name
