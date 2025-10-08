@@ -1,4 +1,6 @@
 using ApiLibrary.DTO;
+using ApiLibrary.DTO.Author.Request;
+using ApiLibrary.DTO.Author.Response;
 using ApiLibrary.Models;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;

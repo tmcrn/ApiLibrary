@@ -16,13 +16,16 @@ public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext): EndpointW
     {
         var authors = await libraryDbContext.Authors.ToListAsync(ct);
 
-        var result = authors.Select(author => new GetAuthorDto
-        {
-            Id = author.Id,
-            Firstname = author.Firstname,
-            Name = author.Name
-        }).ToListAsync(ct);
+        var result = authors
+            .Select(author => new GetAuthorDto
+            {
+                Id = author.Id,
+                Firstname = author.Firstname,
+                Name = author.Name
+            })
+            .ToList();
 
         await Send.OkAsync(result, ct);
+
     }
 }
