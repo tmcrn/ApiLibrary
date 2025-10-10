@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiLibrary.Endpoints.Loan;
 
-public class GetLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<IdLoanDto, GetLoanDto>
+public class GetLoanEndpoint(LibraryDbContext libraryDbContext) 
+    : Endpoint<IdLoanDto, GetLoanDto>
 {
     public override void Configure()
     {
@@ -15,19 +16,31 @@ public class GetLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<IdLoa
 
     public override async Task HandleAsync(IdLoanDto req, CancellationToken ct)
     {
-        var loan = await libraryDbContext.Loans
-            .Include(a => a.Book)
-            .Where(a => a.Id == req.Id)
-            .Select(a => new GetLoanDto
+        var result = await libraryDbContext.Loans
+            .Include(b => b.Book)
+            .ThenInclude(a => a.Author)
+            .Include(u => u.User)
+            .Select(loan => new GetLoanDto
             {
-                Id = a.Id,
-                BookId = a.BookId,
-                UserId = a.UserId,
-                Date = a.Date,
-                PlannedReturningDate = a.PlannedReturningDate,
-                EffectiveReturningDate = a.EffectiveReturningDate,
-                BookTitle = a.Book.Title
+                Id = loan.Id,
+                BookId = loan.BookId,
+                UserId = loan.UserId,
+                BookAuthorId = loan.Book.AuthorId,
+                Date = loan.Date,
+                PlannedReturningDate = loan.PlannedReturningDate,
+                EffectiveReturningDate = loan.EffectiveReturningDate,
+                BookTitle = loan.Book.Title,
+                UserFirstName = loan.User.FirstName,
+                UserLastName = loan.User.LastName,
+                UserEmail = loan.User.Email,
+                UserBirthDate = loan.User.BirthDate,
+                BookReleaseYear = loan.Book.ReleaseYear,
+                BookISBN = loan.Book.ISBN,
+                BookAuthorFirstname = loan.Book.Author.Firstname,
+                BookAuthorName = loan.Book.Author.Name
             })
-            .FirstOrDefaultAsync(ct);
+            .FirstOrDefaultAsync(l => l.Id == req.Id, ct);
+
+        await Send.OkAsync(result, ct);
     }
 }
