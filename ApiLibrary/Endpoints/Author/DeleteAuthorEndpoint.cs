@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiLibrary.Endpoints.Author;
 
-public class DeleteAuthorEndpoint(LibraryDbContext db) : Endpoint<UpdateAuthorDto>
+public class DeleteAuthorEndpoint(LibraryDbContext db) : Endpoint<IdAuthorDto>
 {
     public override void Configure()
     {
@@ -12,7 +12,7 @@ public class DeleteAuthorEndpoint(LibraryDbContext db) : Endpoint<UpdateAuthorDt
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)
+    public override async Task HandleAsync(IdAuthorDto req, CancellationToken ct)
     {
         var author = await db.Authors.FirstOrDefaultAsync(a => a.Id == req.Id, ct);
 
