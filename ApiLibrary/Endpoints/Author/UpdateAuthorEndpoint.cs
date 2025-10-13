@@ -1,11 +1,9 @@
-using ApiLibrary.DTO;
 using ApiLibrary.DTO.Author.Request;
 using ApiLibrary.DTO.Author.Response;
-using ApiLibrary.Models;
 using FastEndpoints;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiLibrary.Endpoints;
+namespace ApiLibrary.Endpoints.Author;
 
 public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext):Endpoint<UpdateAuthorDto, GetAuthorDto>
 {
