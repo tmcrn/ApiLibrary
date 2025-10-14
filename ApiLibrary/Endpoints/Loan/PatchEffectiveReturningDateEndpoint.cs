@@ -10,7 +10,6 @@ public class PatchEffectiveReturningDateEndpoint(LibraryDbContext db): Endpoint<
     public override void Configure()
     {
         Patch("/api/loans/{@Id}/effectiveReturningDate", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(EffectiveReturningDateDto req, CancellationToken ct)

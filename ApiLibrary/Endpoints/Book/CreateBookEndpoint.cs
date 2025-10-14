@@ -9,7 +9,6 @@ public class CreateBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
     public override void  Configure()
     {
         Post("/api/books");
-        AllowAnonymous();
     }   
 
     public override async Task HandleAsync(CreateBookDto req, CancellationToken ct)

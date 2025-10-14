@@ -10,7 +10,6 @@ public class CreateLoanEndpoint(LibraryDbContext libraryDbContext) : Endpoint<Cr
     public override void  Configure()
     {
         Post("/api/loans");
-        AllowAnonymous();
     }   
 
     public override async Task HandleAsync(CreateLoanDto req, CancellationToken ct)

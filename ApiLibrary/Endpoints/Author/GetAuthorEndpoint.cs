@@ -10,7 +10,6 @@ public class GetAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<IdA
     public override void Configure()
     {
         Get("/api/authors/{Id}");
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(IdAuthorDto req, CancellationToken ct)

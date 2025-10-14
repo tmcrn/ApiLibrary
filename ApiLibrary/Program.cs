@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFastEndpoints()
     .AddAuthenticationJwtBearer(s =>
     {
-        s.SigningKey = "MaCléSuperSecrète123!";
+        s.SigningKey = "UneCléTrèsLongueEtSecrèteDe32CaractèresMinimum";
     })
     .AddAuthorization()
     .SwaggerDocument();

@@ -9,7 +9,6 @@ public class DeleteLoanEndpoint(LibraryDbContext db) : Endpoint<UpdateLoanDto>
     public override void Configure()
     {
         Delete("/api/loans/{@Id}", x => new { x.Id });
-        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateLoanDto req, CancellationToken ct)
