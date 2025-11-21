@@ -8,7 +8,8 @@ public class GetAllAuthorsEndpoint(LibraryDbContext libraryDbContext): EndpointW
 {
     public override void Configure()
     {
-        Get("/api/authors");
+        Get("/authors");
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(CancellationToken ct)

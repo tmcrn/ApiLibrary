@@ -10,7 +10,8 @@ public class GetLoanEndpoint(LibraryDbContext libraryDbContext)
 {
     public override void Configure()
     {
-        Get("/api/loans/{Id}");
+        Get("/loans/{Id}");
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(IdLoanDto req, CancellationToken ct)

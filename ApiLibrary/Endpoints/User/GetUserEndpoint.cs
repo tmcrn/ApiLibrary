@@ -8,7 +8,7 @@ public class GetUserEndpoint (LibraryDbContext libraryDbContext): EndpointWithou
 {
     public override void Configure()
     {
-        Get("api/users/{id}");
+        Get("/users/{id}");
         AllowAnonymous();
     }
 

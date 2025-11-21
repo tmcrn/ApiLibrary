@@ -10,7 +10,8 @@ public class UpdateBookEndpoint(LibraryDbContext libraryDbContext):Endpoint<Upda
 {
     public override void Configure()
     {
-        Put("api/books/{@Id}", x => new { x.Id });
+        Put("/books/{@Id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateBookDto req, CancellationToken ct)

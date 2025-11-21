@@ -8,7 +8,7 @@ public class DeleteUserEndpoint (LibraryDbContext db): Endpoint<UpdateUserDto>
 {
     public override void Configure()
     {
-        Delete("api/users/{@Id}", x => new { x.Id });
+        Delete("/users/{@Id}", x => new { x.Id });
         AllowAnonymous();
     }
     

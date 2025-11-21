@@ -9,7 +9,8 @@ public class UpdateAuthorEndpoint(LibraryDbContext libraryDbContext):Endpoint<Up
 {
     public override void Configure()
     {
-        Put("api/authors{id}");
+        Put("/authors/{@Id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateAuthorDto req, CancellationToken ct)

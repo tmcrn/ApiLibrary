@@ -8,7 +8,8 @@ public class DeleteAuthorEndpoint(LibraryDbContext db) : Endpoint<IdAuthorDto>
 {
     public override void Configure()
     {
-        Delete("/api/authors/{@Id}", x => new { x.Id });
+        Delete("/authors/{@Id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(IdAuthorDto req, CancellationToken ct)

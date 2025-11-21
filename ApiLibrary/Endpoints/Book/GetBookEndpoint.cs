@@ -9,7 +9,8 @@ public class GetBookEndpoint(LibraryDbContext libraryDbContext) : Endpoint<IdBoo
 {
     public override void Configure()
     {
-        Get("/api/books/{Id}");
+        Get("/books/{Id}");
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(IdBookDto req, CancellationToken ct)

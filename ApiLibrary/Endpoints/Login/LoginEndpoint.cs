@@ -9,7 +9,7 @@ public class LoginEndpoint : Endpoint<LoginRequestDto, LoginResponseDto>
 {
     public override void Configure()
     {
-        Post("/api/login");
+        Post("/login");
         AllowAnonymous();
     }
 

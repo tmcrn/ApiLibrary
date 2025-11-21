@@ -8,7 +8,7 @@ public class CreateUserEndpoint (LibraryDbContext libraryDbContext): Endpoint<Cr
 {
     public override void Configure()
     {
-        Post("api/users");
+        Post("/users");
         AllowAnonymous();
     }
 

@@ -8,8 +8,8 @@ public class CreateAuthorEndpoint(LibraryDbContext libraryDbContext) : Endpoint<
 {
     public override void  Configure()
     {
-        Post("/api/authors");
-        
+        Post("/authors");
+        AllowAnonymous();
     }   
 
     public override async Task HandleAsync(CreateAuthorDto req, CancellationToken ct)

@@ -8,7 +8,8 @@ public class DeleteBookEndpoint(LibraryDbContext db) : Endpoint<UpdateBookDto>
 {
     public override void Configure()
     {
-        Delete("/api/books/{@Id}", x => new { x.Id });
+        Delete("/books/{@Id}", x => new { x.Id });
+        AllowAnonymous();
     }
 
     public override async Task HandleAsync(UpdateBookDto req, CancellationToken ct)
